@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- component scan -->
+    <!-- in this example, we will scan the beans from the packge com.http418.spring.di -->
+    <context:component-scan base-package="com.http418.spring.di"/>
+
+    <!-- beans creation and autowire -->
+    <bean id="xmlJdbcConnection" class="com.http418.spring.xmlnoannotation.XmlJdbcConnection">
+    </bean>
+
+    <bean id="xmlPersonDAO" class="com.http418.spring.xmlnoannotation.XmlPersonDAO">
+        <property name="xmlJdbcConnection" ref="xmlJdbcConnection"/>  <!-- @Autowired -->
+    </bean>
+</beans>
